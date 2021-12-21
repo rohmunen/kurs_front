@@ -1,0 +1,7 @@
+export const LOGIN_ROUTE = '/login'
+export const REGISTRATION_ROUTE = '/registration'
+export const HOME_ROUTE = '/home'
+export const COMPLETE_ROUTE = '/complete'
+export const VACANCIES_ROUTE = '/vacancies'
+export const CREACTE_VACANCIES_ROUTE = '/createvacancies'
+export const VACANCY_ROUTE = '/vacancy/:id'
