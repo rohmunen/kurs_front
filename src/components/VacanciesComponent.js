@@ -6,6 +6,7 @@ import {Context} from "../index";
 import { apply } from '../http/vacancyAPI';
 import { getApplied } from '../http/vacancyAPI';
 import {Spinner} from "react-bootstrap";
+import Card from "react-bootstrap/Card"
 const VacanciesComponent = observer(() => {
     const {user} = useContext(Context)
     const {vacancyContext} = useContext(Context)
@@ -33,8 +34,10 @@ const VacanciesComponent = observer(() => {
     return (
         <div>            
         {vacancyContext.vacancies.map(vacancy =>
-            <div key={vacancy[0]} className="vacancy">
-                <p>Название вакансии: {vacancy[1]}</p>
+            <Card style={{width: 600}} className="p-5 mt-3">
+                <a style={{textDecoration:'none', fontSize:30}}href={"http://localhost:3000/vacancy/" + vacancy[0]}>{vacancy[1]}</a>
+                <p style={{marginTop:10}}>Location: {vacancy[8] + ', ' + vacancy[6]}</p>
+                <p>Salary: {vacancy[3] != '' ? vacancy[3] + ' ' + vacancy[10]: 'not stated'}</p>
                 {localStorage.getItem('role') == 1 ? 
                 <Button disabled = {
                 vacancyContext.applied.indexOf(parseInt(vacancy[0])) != -1}
@@ -43,8 +46,9 @@ const VacanciesComponent = observer(() => {
                     Откликнуться
                 </Button>
                 : 
-                ""}
-            </div>
+                ""
+                }
+            </Card>
         )}
         </div>
     );

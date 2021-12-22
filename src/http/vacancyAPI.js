@@ -31,7 +31,8 @@ export const createVacancy = async (iss,vacancy_name,
     location_details,
     country_name,    
     country_language,
-    country_currency) => {
+    country_currency,
+    vacancy_salary) => {
        const {data} = await $authHost.post('/createvacancy', {iss,
         vacancy_name,
         vacancy_description,
@@ -40,7 +41,8 @@ export const createVacancy = async (iss,vacancy_name,
         location_details,
         country_name,    
         country_language,
-        country_currency})
+        country_currency,
+        vacancy_salary})
     return data
 }
  

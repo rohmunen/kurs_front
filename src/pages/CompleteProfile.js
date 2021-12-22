@@ -23,7 +23,6 @@ const CompleteProfile = observer(() => {
     const [yearsOfWork, setYearsOfWork] = useState('None')
     const [educationName, setEducationName] = useState('None')
     const [educationLevel, setEducationLevel] = useState('None')
-
     const [value, setValue] = useState([]);
     const {user} = useContext(Context)
     const eclick = async () => {

@@ -6,6 +6,8 @@ import { useHistory } from "react-router-dom";
 import Button from 'react-bootstrap/Button'
 import { COMPLETE_ROUTE } from '../utils/consts';
 import VacanciesComponent from '../components/VacanciesComponent'
+import {Container} from 'react-bootstrap'
+
 const Vacancies = observer(() => {
     const history = useHistory()
     const {user} = useContext(Context)
@@ -14,9 +16,11 @@ const Vacancies = observer(() => {
         setValue(val)
     }
     return(
-            <div className="vacancies_rows">
+            <Container 
+            className='d-flex justify-content-center align-items-center'
+            >
                 <p> {user.isComplete == "true" ? <VacanciesComponent/>: <Button variant="outline-success" onClick={() => history.push(COMPLETE_ROUTE)}>Complete your profile to view vacancies</Button>} </p>
-            </div>
+            </Container>
         )
     })
 

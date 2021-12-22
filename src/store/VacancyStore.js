@@ -11,7 +11,8 @@ export default class VacancyStore {
     }
 
     addIds(id){
-
+        this.ids.push(id)
+        console.log(this.ids)
     }
     addResponded(vacancies){
         this.responded.push(vacancies)
@@ -29,7 +30,11 @@ export default class VacancyStore {
     clearVacancies() {
         this.vacancies = []
     }
-    
+    clearData() {
+        this.ids = []
+        this.responded = []
+        this.profiles = []
+    }
 
     setApplied(applied) {
         this.applied = applied
