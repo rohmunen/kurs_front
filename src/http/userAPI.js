@@ -24,13 +24,23 @@ export const check = async() => {
     const {data} = await $authHost.get('/auth')
 }
 
-export const employeecomplete = async(iss, employee_name, skills) => {
-    const {data} = await $authHost.post('/completeemployee', {iss, employee_name, skills})
+export const employeecomplete = async(iss, employee_name, skills, gender, about, age, city,country,pos, yearsOfWork, educationName, educationLevel) => {
+    const {data} = await $authHost.post('/completeemployee', {iss, employee_name, skills,gender,about,age,city,country,pos,yearsOfWork,educationName,educationLevel})
     return data
 }
 
 export const companycomplete = async(iss, company_name) => {
     const {data} = await $authHost.post('/completecompany', {iss, company_name})
+    return data
+}
+
+export const companyGetEmployee = async (id) => {
+    const {data} = await $authHost.get('/companygetemployee/' + id)
+    return data
+}
+
+export const getProfile = async (id) => {
+    const {data} = await $authHost.get('/profile/' + id)
     return data
 }
 

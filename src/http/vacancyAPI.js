@@ -42,6 +42,19 @@ export const createVacancy = async (iss,vacancy_name,
         country_language,
         country_currency})
     return data
-
 }
  
+export const apply = async (iss,vac) => {
+    const {data} = await $authHost.post('/apply', {iss,vac})
+    return data
+}
+
+export const getApplied = async (iss) => {
+    const {data} = await $authHost.get('/getapplied/' + iss)
+    return data
+}
+
+export const getVacancyResponses = async(iss) => {
+    const {data} = await $authHost.get('/getvacancyresponses/' + iss)
+    return data
+}

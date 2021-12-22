@@ -5,8 +5,9 @@ import {Context} from "../index";
 import { createVacancy } from '../http/vacancyAPI';
 import { VACANCIES_ROUTE } from '../utils/consts';
 import { useState } from 'react'
-import {Form} from 'react-bootstrap'
+import {Container,Form} from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
+import Card from "react-bootstrap/Card"
 
 const CreateVacancy = observer(() => {
     const history = useHistory()
@@ -40,8 +41,12 @@ const CreateVacancy = observer(() => {
     })
     }
     return (
-        <div>                    
-        <Form className="d-flex flex-column">
+        <Container 
+        className='d-flex justify-content-center align-items-center'
+        style={{height: window.innerHeight - 54}}
+        >
+            <Card style={{width: 600}} className="p-5 mt-3">
+            <Form className="d-flex flex-column">
             <Form.Control
                 className='mt-2'
                 placeholder="Enter your vacancy name"
@@ -90,10 +95,13 @@ const CreateVacancy = observer(() => {
                 value = {countryCurrency}
                 onChange = {e => setCountryCurrency(e.target.value)}
             />
-        <Button onClick={click} style={{width:250,alignSelf:'center'}} className="mt-3" variant={"outline-success"}>
-            Submit
-        </Button>
-    </Form></div>
+            <Button onClick={click} style={{width:250,alignSelf:'center'}} className="mt-3" variant={"outline-success"}>
+                Submit
+            </Button>
+        </Form>
+        </Card>  
+
+        </Container>                
     )
     })
 export default CreateVacancy;

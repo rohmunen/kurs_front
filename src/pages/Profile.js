@@ -6,17 +6,18 @@ import { useHistory } from "react-router-dom";
 import { useEffect } from 'react';
 import { getVacancy } from '../http/vacancyAPI';
 import {Spinner} from "react-bootstrap";
+import { companyGetEmployee } from '../http/userAPI';
 
 
-const Vacancy = observer(() => {
+const Profile = observer(() => {
     const [vacancy, setVacancy] = useState()
     const [loading, setLoading] = useState(true)
+    const [me, setMe] = useState()
     useEffect(()=>{
-        console.log('here')
-        getVacancy(window.location.href.split('/')[4]).then(res => {
+        companyGetEmployee(localStorage.getItem('user_id')).then(res => {
             if (res !== null) {
-                console.log('res',res[0].getvacancy.substring(1, res[0].getvacancy.length - 1).split(','))
-                setVacancy(res[0].getvacancy.substring(1, res[0].getvacancy.length - 1).split(','))
+                console.log(res.employee.substring(1, res.employee.length - 1).split(','))
+                setMe(res.employee.substring(1, res.employee.length - 1).split(','))
             }
         }).finally(() => setLoading(false))
     }, [])
@@ -25,10 +26,9 @@ const Vacancy = observer(() => {
     }
     return(
             <div className="vacancies_rows">
-                <p>VACANCY NAME {vacancy[1]}</p>
+                <p>my email {me[0]}</p>
             </div>
         )
     })
 
-export default Vacancy
-
+export default Profile
