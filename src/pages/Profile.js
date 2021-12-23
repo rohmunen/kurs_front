@@ -33,20 +33,19 @@ const Profile = observer(() => {
     const [value, setValue] = useState()
     const [loading, setLoading] = useState(true)
     const [me, setMe] = useState()
-    const [name, setName] = useState('')
-    const [about, setAbout] = useState('')
+    const [name, setName] = useState()
+    const [about, setAbout] = useState()
     const [gender, setGender] = useState('NS')
-    const [age, setAge] = useState('')
-    const [city, setCity] = useState('')
-    const [country, setCountry] = useState('')
-    const [pos, setPos] = useState('None')
-    const [yearsOfWork, setYearsOfWork] = useState('None')
-    const [educationName, setEducationName] = useState('None')
-    const [educationLevel, setEducationLevel] = useState('None')
+    const [age, setAge] = useState()
+    const [city, setCity] = useState()
+    const [country, setCountry] = useState()
+    const [pos, setPos] = useState('NS')
+    const [yearsOfWork, setYearsOfWork] = useState('NS')
+    const [educationName, setEducationName] = useState('NS')
+    const [educationLevel, setEducationLevel] = useState('NS')
     useEffect(()=>{
         setLoading(true)
         getEmployeeSkills(localStorage.getItem('user_id')).then(res => {
-            console.log('скилс =)', res)
             setSkills(res)
         })
         getemployeeid(localStorage.getItem('user_id')).then(res => {
@@ -54,6 +53,15 @@ const Profile = observer(() => {
                 if (result !== null) {
                     console.log(result.employee.substring(1, result.employee.length - 1).split(','))
                     setName(result.employee.substring(1, result.employee.length - 1).split(',')[1])
+                    setGender(result.employee.substring(1, result.employee.length - 1).split(',')[3])
+                    setAbout(result.employee.substring(1, result.employee.length - 1).split(',')[2])
+                    setAge(result.employee.substring(1, result.employee.length - 1).split(',')[4])
+                    setCity(result.employee.substring(1, result.employee.length - 1).split(',')[5])
+                    setCountry(result.employee.substring(1, result.employee.length - 1).split(',')[6])
+                    setPos(result.employee.substring(1, result.employee.length - 1).split(',')[7])
+                    setYearsOfWork(result.employee.substring(1, result.employee.length - 1).split(',')[8])
+                    setEducationName(result.employee.substring(1, result.employee.length - 1).split(',')[9])
+                    setEducationLevel(result.employee.substring(1, result.employee.length - 1).split(',')[10])
                 }
             }).finally(() => {
                 setLoading(false)
@@ -84,17 +92,17 @@ const Profile = observer(() => {
                         />
                         </FloatingLabel>
                         <FormLabel>
-                            Your skills
-                            {skills.map(skill => {
-                                return <p>{skill.getuserskills.split(',')[1]}</p>
-                            })}
+                            Your skills<br/>
+                            {skills.map((skill,i,arr) => 
+                                <p style={{display:'inline'}}>{i+1 === arr.length ? skill.getuserskills.split(',')[1] : skill.getuserskills.split(',')[1] + ', '}</p>
+                            )}
                         </FormLabel>
                         <Skills value = {value} setValue = {setValue}/>
                         <FormLabel>
-                            Gender
+                            Gender (NOW: {gender})
                         </FormLabel>
                         <Form.Select onChange={e => setGender(e.target.value)}>
-                            <option>Choose your gender....</option>
+                            <option>Change gender</option>
                             <option value="M">M</option>
                             <option value="F">F</option>
                             <option value="NS">NS</option>
@@ -181,10 +189,10 @@ const Profile = observer(() => {
                         />
                         </FloatingLabel>
                         <FormLabel>
-                            Education level
+                            Education level (NOW: {educationLevel})
                         </FormLabel>
                         <Form.Select onChange={e => setEducationLevel(e.target.value)}>
-                            <option>Choose your education level</option>
+                            <option>Change education level</option>
                             <option value="Bachelor">Bachelor</option>
                             <option value="Master">Master</option>
                             <option value="Doctorate">Doctorate</option>

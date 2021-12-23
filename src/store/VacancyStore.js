@@ -22,7 +22,6 @@ export default class VacancyStore {
         this.profiles.push(profiles)
     }
     addVacancies(vac) {
-        this.clearVacancies()
         vac.forEach(element => {
             this.vacancies.push(element.vacancy.substring(1, element.vacancy.length - 1).split(','))
         })

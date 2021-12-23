@@ -60,3 +60,8 @@ export const getVacancyResponses = async(iss) => {
     const {data} = await $authHost.get('/getvacancyresponses/' + iss)
     return data
 }
+
+export const deleteVacancy = async(iss,id) => {
+    const {data} = await $authHost.post('/deleteVacancy', {iss,id})
+    return data
+}
