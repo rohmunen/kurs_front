@@ -38,7 +38,8 @@ const VacancyResponses = observer(() => {
                                 vacancyContext.addProfiles(result.employee.substring(1, result.employee.length-1).split(','))
                             }).then(() => {
                                 getVacancy(element.split('/')[0]).then(result =>{
-                                    vacancyContext.addResponded(result[0].getvacancy.substring(1, result[0].getvacancy.length - 1).split(','))
+                                    console.log('result', result)
+                                    vacancyContext.addResponded(result)
                                 }).finally(()=> {
                                     k++
                                     console.log(k)

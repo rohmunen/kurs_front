@@ -42,7 +42,7 @@ export default class VacancyStore {
     }
     addApplied(applied) {
         console.log('bf',this.applied)
-        this.applied.push(parseInt(applied))
+        this.applied.push(applied)
         console.log('af',this.applied)
     }
     removeVacancy(id) {

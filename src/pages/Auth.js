@@ -23,7 +23,8 @@ const Auth = observer(() => {
     const [state, setState] = useState(false)
     const click = async () => {
         if (isLogin) {
-            await login(email, password).then(response =>{
+            await login(email.replaceAll(',','‚').replaceAll('--',''),
+                 password.replaceAll(',','‚').replaceAll('--','')).then(response =>{
                     user.setUser(user)
                     user.setIsAuth(true)
                     user.setRole(localStorage.getItem('role'))

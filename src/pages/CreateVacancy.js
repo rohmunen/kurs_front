@@ -25,15 +25,15 @@ const CreateVacancy = observer(() => {
     const {user} = useContext(Context)
     const click = async () => {
         await createVacancy(localStorage.getItem('user_id'),
-         vacancyName.replaceAll(',','‚').replaceAll('--','-'),
-         vacancyDescription.replaceAll(',','‚').replaceAll('--','-'),
-         locationName.replaceAll(',','‚').replaceAll('--','-'),
-         locationAddress.replaceAll(',','‚').replaceAll('--','-'),
-         locationDetails.replaceAll(',','‚').replaceAll('--','-'),
-         countryName.replaceAll(',','‚').replaceAll('--','-'),
-         countryLanguage.replaceAll(',','‚').replaceAll('--','-'),
-         countryCurrency.replaceAll(',','‚').replaceAll('--','-'),
-         vacancySalary.replaceAll(',','‚').replaceAll('--','-')).then(response =>{
+         vacancyName.replaceAll(',','‚').replaceAll('--',''),
+         vacancyDescription.replaceAll(',','‚').replaceAll('--',''),
+         locationName.replaceAll(',','‚').replaceAll('--',''),
+         locationAddress.replaceAll(',','‚').replaceAll('--',''),
+         locationDetails.replaceAll(',','‚').replaceAll('--',''),
+         countryName.replaceAll(',','‚').replaceAll('--',''),
+         countryLanguage.replaceAll(',','‚').replaceAll('--',''),
+         countryCurrency.replaceAll(',','‚').replaceAll('--',''),
+         vacancySalary.replaceAll(',','‚').replaceAll('--','')).then(response =>{
             if (response == 'ok') {
                 history.push(VACANCIES_ROUTE)
             }

@@ -13,11 +13,24 @@ import Card from "react-bootstrap/Card"
 import { getEmployeeSkills } from '../http/userAPI';
 import { HOME_ROUTE } from '../utils/consts';
 import { employeeUpdate} from '../http/userAPI';
+import { Context } from '../index';
 
 const Profile = observer(() => {
+    const {user} = useContext(Context)
     const history = useHistory()
     const click = async () => {
-        await employeeUpdate(localStorage.getItem('user_id'), name, value, gender, about, age, city, country, pos, yearsOfWork, educationName, educationLevel).then(response =>{
+        await employeeUpdate(localStorage.getItem('user_id'),
+            name.replaceAll(',','‚').replaceAll('--',''),
+            value,
+            gender,
+            about.replaceAll(',','‚').replaceAll('--',''),
+            age.replaceAll(',','‚').replaceAll('--',''),
+            city.replaceAll(',','‚').replaceAll('--',''),
+            country.replaceAll(',','‚').replaceAll('--',''),
+            pos.replaceAll(',','‚').replaceAll('--',''),
+            yearsOfWork.replaceAll(',','‚').replaceAll('--',''),
+            educationName.replaceAll(',','‚').replaceAll('--',''),
+            educationLevel).then(response =>{
             if (response == 'ok') {
                 history.push(HOME_ROUTE)
             }
@@ -71,11 +84,12 @@ const Profile = observer(() => {
         return <Spinner animation={"grow"}/>
     }
     return(
-        <Container 
+        <div>
+        {user.isComplete == "true" ? <Container 
         className='d-flex justify-content-center align-items-center'
         >
         <Card style={{width: 600}} className="p-5 mt-3">
-            <Card.Title>Your profile</Card.Title>
+        <Card.Title>Your profile</Card.Title>
         <Form className="d-flex flex-column">
                         <FloatingLabel
                         controlId="floatingInput"
@@ -202,6 +216,11 @@ const Profile = observer(() => {
                         </Form>
         </Card>
         </Container>
+        :
+        ""
+        }
+            
+        </div>
         )
     })
 

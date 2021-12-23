@@ -27,16 +27,16 @@ const CompleteProfile = observer(() => {
     const {user} = useContext(Context)
     const eclick = async () => {
         await employeecomplete(localStorage.getItem('user_id'),
-            name,
+            name.replaceAll(',','‚').replaceAll('--',''),
             value,
             gender,
-            about,
-            age,
-            city,
-            country,
-            pos,
-            yearsOfWork,
-            educationName,
+            about.replaceAll(',','‚').replaceAll('--',''),
+            age.replaceAll(',','‚').replaceAll('--',''),
+            city.replaceAll(',','‚').replaceAll('--',''),
+            country.replaceAll(',','‚').replaceAll('--',''),
+            pos.replaceAll(',','‚').replaceAll('--',''),
+            yearsOfWork.replaceAll(',','‚').replaceAll('--',''),
+            educationName.replaceAll(',','‚').replaceAll('--',''),
             educationLevel).then(response =>{
             if (response == 'ok') {
                 localStorage.setItem('complete', true)
