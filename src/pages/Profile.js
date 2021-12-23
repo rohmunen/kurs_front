@@ -1,10 +1,8 @@
 import React, {useContext} from 'react'
 import { useState } from 'react'
 import {observer} from "mobx-react-lite";
-import { Context } from '../index';
 import { useHistory } from "react-router-dom";
 import { useEffect } from 'react';
-import { getVacancy } from '../http/vacancyAPI';
 import {FormLabel, Spinner} from "react-bootstrap";
 import { companyGetEmployee, getemployeeid } from '../http/userAPI';
 import {Container,Form} from 'react-bootstrap'

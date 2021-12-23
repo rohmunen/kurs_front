@@ -5,7 +5,7 @@ import { Context } from '../index';
 import { useHistory } from "react-router-dom";
 import Button from 'react-bootstrap/Button'
 import { COMPLETE_ROUTE } from '../utils/consts';
-import VacanciesComponent from '../components/VacanciesComponent'
+import YourVacanciesComponent from '../components/YourVacanciesComponent'
 import {Container} from 'react-bootstrap'
 
 const Vacancies = observer(() => {
@@ -19,7 +19,7 @@ const Vacancies = observer(() => {
             <Container 
             className='d-flex justify-content-center align-items-center'
             >
-                <p> {user.isComplete == "true" ? <VacanciesComponent/>: <Button variant="outline-success" onClick={() => history.push(COMPLETE_ROUTE)}>Complete your profile to view vacancies</Button>} </p>
+                <p> {user.isComplete == "true" ? <YourVacanciesComponent/>: <Button variant="outline-success" onClick={() => history.push(COMPLETE_ROUTE)}>Complete your profile to view vacancies</Button>} </p>
             </Container>
         )
     })

@@ -9,11 +9,12 @@ import VacancyResponses from "./pages/VacancyResponses"
 import Profile from "./pages/Profile"
 import CheckProfile from "./pages/CheckProfile"
 import YourVacanciesComponent from "./components/YourVacanciesComponent"
+import YourVacancies from "./pages/YourVacancies"
 
 export const authRoutes = [
     {
         path: YOUR_VACANCIES_ROUTE,
-        Component: YourVacanciesComponent
+        Component: YourVacancies
     },
     {
         path: CHECK_PROFILE_ROUTE,

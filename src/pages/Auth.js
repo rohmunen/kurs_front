@@ -1,7 +1,6 @@
 import React, {useContext} from 'react'
-import {Container,Form} from 'react-bootstrap'
+import {Form} from 'react-bootstrap'
 import { useState } from 'react'
-import Card from "react-bootstrap/Card"
 import { Button } from 'react-bootstrap'
 import {useLocation} from 'react-router-dom'
 import { HOME_ROUTE, LOGIN_ROUTE } from '../utils/consts'
@@ -10,8 +9,8 @@ import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 import { useHistory } from "react-router-dom";
 import Alert from 'react-bootstrap/Alert'
-
-
+import Card from "react-bootstrap/Card"
+import {Container} from 'react-bootstrap'
 const Auth = observer(() => {
     const history = useHistory()
     const {user} = useContext(Context)

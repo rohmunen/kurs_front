@@ -26,7 +26,18 @@ const CompleteProfile = observer(() => {
     const [value, setValue] = useState([]);
     const {user} = useContext(Context)
     const eclick = async () => {
-        await employeecomplete(localStorage.getItem('user_id'), name, value, gender, about, age, city, country, pos, yearsOfWork, educationName, educationLevel).then(response =>{
+        await employeecomplete(localStorage.getItem('user_id'),
+            name,
+            value,
+            gender,
+            about,
+            age,
+            city,
+            country,
+            pos,
+            yearsOfWork,
+            educationName,
+            educationLevel).then(response =>{
             if (response == 'ok') {
                 localStorage.setItem('complete', true)
                 user.setIsComplete('true')

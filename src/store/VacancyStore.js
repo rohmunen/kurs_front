@@ -22,8 +22,9 @@ export default class VacancyStore {
         this.profiles.push(profiles)
     }
     addVacancies(vac) {
+        this.vacancies = []
         vac.forEach(element => {
-            this.vacancies.push(element.vacancy.substring(1, element.vacancy.length - 1).split(','))
+            this.vacancies.push(element.split(','))
         })
     }
     clearVacancies() {
@@ -36,6 +37,7 @@ export default class VacancyStore {
     }
 
     setApplied(applied) {
+        this.applied = []
         this.applied = applied
     }
     addApplied(applied) {
@@ -44,6 +46,6 @@ export default class VacancyStore {
         console.log('af',this.applied)
     }
     removeVacancy(id) {
-        this.todos = this.todos.filter(todo => todo.id !== id)
+        this.vacancies = this.vacancies.filter(vacancy => vacancy[0] !== id)
     }
 }

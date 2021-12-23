@@ -4,7 +4,6 @@ import {observer} from "mobx-react-lite";
 import { Context } from '../index';
 import { useHistory } from "react-router-dom";
 import { useEffect } from 'react';
-import { getVacancy } from '../http/vacancyAPI';
 import {Spinner} from "react-bootstrap";
 import { companyGetEmployee } from '../http/userAPI';
 import Button from 'react-bootstrap/Button'

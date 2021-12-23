@@ -16,8 +16,7 @@ const Vacancy = observer(() => {
         console.log('here')
         getVacancy(window.location.href.split('/')[4]).then(res => {
             if (res !== null) {
-                console.log('res',res[0].getvacancy.substring(1, res[0].getvacancy.length - 1).split(','))
-                setVacancy(res[0].getvacancy.substring(1, res[0].getvacancy.length - 1).split(','))
+                setVacancy(res)
             }
         }).finally(() => setLoading(false))
     }, [])

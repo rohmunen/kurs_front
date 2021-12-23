@@ -11,6 +11,9 @@ import {getVacancyResponses} from '../http/vacancyAPI'
 import {Spinner} from "react-bootstrap";
 import { companyGetEmployee } from '../http/userAPI';
 import { getVacancy } from '../http/vacancyAPI';
+import Card from "react-bootstrap/Card"
+import {Container} from 'react-bootstrap'
+
 const VacancyResponses = observer(() => {
     let i = -1;
     const [loading, setLoading] = useState(true)
@@ -56,12 +59,16 @@ const VacancyResponses = observer(() => {
     }
     if (dataispresent){
         return(
-            <div>
+            <Container 
+            className='d-flex justify-content-center align-items-center'
+            >
+            <Card style={{width: 600}} className="p-5 mt-3">
                 {vacancyContext.profiles.map(element => {
                     i++
-                    return <p><a href={"http://localhost:3000/profile/" + vacancyContext.ids[i]}>{element[1]}</a> откликнулся на вакансию <a href={"http://localhost:3000/vacancy/" + vacancyContext.responded[i][0]}>{vacancyContext.responded[i][1]}</a></p>
+                    return <p style={{fontSize:20}}><a style={{textDecoration:'none'}} href={"http://localhost:3000/profile/" + vacancyContext.ids[i]}>{element[1]}</a> откликнулся на вакансию <a style={{textDecoration:'none'}} href={"http://localhost:3000/vacancy/" + vacancyContext.responded[i][0]}>{vacancyContext.responded[i][1]}</a></p>
                 })}
-            </div>
+            </Card>
+            </Container>
         )
     } else {
         return (
